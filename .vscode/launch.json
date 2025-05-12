@@ -9,6 +9,20 @@
             "name": "Servidor",
             "request": "launch",
             "mainClass": "Servidor",
+            "projectName": "TareaSocket_98f98e0e"
+        },
+        {
+            "type": "java",
+            "name": "Cliente",
+            "request": "launch",
+            "mainClass": "Cliente",
+            "projectName": "TareaSocket_98f98e0e"
+        },
+        {
+            "type": "java",
+            "name": "Servidor",
+            "request": "launch",
+            "mainClass": "Servidor",
             "projectName": "TareaSocket_46317b0c"
         },
         {

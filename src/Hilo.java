@@ -3,39 +3,48 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import javax.swing.JOptionPane;
 
 public class Hilo extends Thread {
-String palabra;
-public Hilo(String palabra){
-this.palabra = palabra;
-}
+    String num1, num2, num3, num4, num5, opcion;
 
-@Override
-public void run(){
+    public Hilo(String num1, String num2, String num3, String num4, String num5, String opcion) {
+        this.num1 = num1;
+        this.num2 = num2;
+        this.num3 = num3;
+        this.num4 = num4;
+        this.num5 = num5;
+        this.opcion = opcion;
+    }
 
-    try {
-        //Creacion de socket cliente
-        Socket clientSocket = new Socket("LocalHost", 6789);
-        //Creacion de flujo por donde saldran los datos al servidor 
-        DataOutputStream fSalida = new DataOutputStream(clientSocket.getOutputStream()); 
-        BufferedReader eServidor = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        //Enviamos lo que tenemos desde el servidor
+    @Override
+    public void run() {
+        try {
+            // Crear el socket cliente
+            Socket clientSocket = new Socket("LocalHost", 6789);
+            DataOutputStream salida = new DataOutputStream(clientSocket.getOutputStream());
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-        for (int i = 2; i < 8; i++){
-            fSalida.writeBytes(i + "\n");
+            // Enviar los números ingresados
+            salida.writeBytes(num1 + "\n");
+            salida.writeBytes(num2 + "\n");
+            salida.writeBytes(num3 + "\n");
+            salida.writeBytes(num4 + "\n");
+            salida.writeBytes(num5 + "\n");
+
+            salida.writeBytes(opcion + "\n");
+
+            // Leer la respuesta del servidor
+            String respuesta;
+           respuesta = entrada.readLine();
+        Cliente.resultadoServidor = respuesta;
+        JOptionPane.showMessageDialog(null, Cliente.resultadoServidor);
+
+            clientSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        String respuesta="";
-        for (int i = 0; i < 5; i++){
-       respuesta += eServidor.readLine();
-
-        }
-            
-        
-
-        System.out.println("Respuesta del servidor: " + respuesta);
-        clientSocket.close();
-    } catch (IOException e) {
-        System.err.println("Error de entrada/salida: " + e.getMessage());
     }
 }
-}
+
+

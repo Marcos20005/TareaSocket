@@ -1,15 +1,15 @@
-
 public class Inventario {
-int cantidad;
-String nombre;
-String descripcion;
-String codigo;
-public Inventario(int cantidad, String nombre, String descripcion, String codigo) {
-    this.cantidad = cantidad;
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.codigo = codigo;
-}
+    int cantidad;
+    String nombre;
+    String descripcion;
+    String codigo;
+
+    public Inventario(int cantidad, String nombre, String descripcion, String codigo) {
+        this.cantidad = cantidad;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.codigo = codigo;
+    }
 
     public int getCantidad() {
         return cantidad;
@@ -42,5 +42,5 @@ public Inventario(int cantidad, String nombre, String descripcion, String codigo
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-
 }
+
