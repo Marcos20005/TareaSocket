@@ -94,8 +94,8 @@ public class Servidor {
                 // Enviar la respuesta al cliente
                 salida.writeBytes(respuesta + "\n");
 
-                clientSocket.close();
-                System.out.println("Cliente desconectado");
+                //clientSocket.close();
+                //System.out.println("Cliente desconectado");
             }
         } catch (IOException e) {
         }

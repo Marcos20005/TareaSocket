@@ -22,15 +22,13 @@ public class Cliente {
     static String resultadoServidor = "";
 
     public static void main(String[] args) throws Exception {
-        ArrayList<Inventario> inventario = new ArrayList<>();  
-
         JFrame frame = new JFrame("Almacenes S.A");
         Container conte = new Container();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
 
         btn = new JButton("Agregar números");
-        btn.setBounds(80, 80, 200, 30);
+        btn.setBounds(80, 110, 200, 30);
         conte.add(btn);
         btn.addActionListener(new ActionListener() {
             @Override
@@ -40,7 +38,7 @@ public class Cliente {
         });
 
         btn6 = new JButton("Salir");
-        btn6.setBounds(80, 180, 200, 30);
+        btn6.setBounds(80, 170, 200, 30);
         conte.add(btn6);
 
         btn6.addActionListener(new ActionListener() {
@@ -123,6 +121,7 @@ public class Cliente {
 
                 // Llamamos al hilo con los números y la opción
                 Hilo miHilo = new Hilo(num1, num2, num3, num4, num5, opcion);
+                frame.dispose();
                 miHilo.start();
             }
         });
